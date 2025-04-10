@@ -1,0 +1,6 @@
+@StepCityApi_HostAddress = http://localhost:5029
+
+GET {{StepCityApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
