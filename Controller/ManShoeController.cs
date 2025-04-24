@@ -1184,4 +1184,90 @@ public class ManShoeController : ControllerBase
         return Ok(shoe);
     }
 
+    [HttpPost]
+    public IActionResult AddShoe([FromBody] ShoeFeature newShoe)
+    {
+        if (newShoe == null)
+        {
+            return BadRequest(new { message = "Geçersiz ayakkabı verisi." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.Brand))
+        {
+            return BadRequest(new { message = "Marka alanı boş olamaz." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.Model))
+        {
+            return BadRequest(new { message = "Model alanı boş olamaz." });
+        }
+
+        if (newShoe.Price <= 0)
+        {
+            return BadRequest(new { message = "Fiyat sıfırdan büyük olmalıdır." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.Title))
+        {
+            return BadRequest(new { message = "Başlık alanı boş olamaz." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.Cargo))
+        {
+            return BadRequest(new { message = "Kargo durumu boş olamaz." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.Image1) || string.IsNullOrEmpty(newShoe.Image2) || string.IsNullOrEmpty(newShoe.Image3) || string.IsNullOrEmpty(newShoe.Image4))
+        {
+            return BadRequest(new { message = "Tüm görsel alanları boş olamaz." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.ShopierLink))
+        {
+            return BadRequest(new { message = "Shopier linki boş olamaz." });
+        }
+
+        var newId = Shoe.Max(x => x.Id) + 1;
+        newShoe.Id = newId;
+
+
+        Shoe.Add(newShoe);
+        return CreatedAtAction(nameof(GetShoeById), new { id = newShoe.Id }, newShoe);
+    }
+
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateShoe(int id, [FromBody] ShoeFeature updatedShoe)
+    {
+        var shoe = Shoe.FirstOrDefault(x => x.Id == id);
+        if (shoe == null)
+        {
+            return NotFound(new { message = $"Id'si {id} olan ayakkabı bulunamadı." });
+        }
+
+        if (!string.IsNullOrEmpty(updatedShoe.Brand)) shoe.Brand = updatedShoe.Brand;
+        if (!string.IsNullOrEmpty(updatedShoe.Model)) shoe.Model = updatedShoe.Model;
+        if (updatedShoe.Price > 0) shoe.Price = updatedShoe.Price;
+        if (!string.IsNullOrEmpty(updatedShoe.Image1)) shoe.Image1 = updatedShoe.Image1;
+        if (!string.IsNullOrEmpty(updatedShoe.Image2)) shoe.Image2 = updatedShoe.Image2;
+        if (!string.IsNullOrEmpty(updatedShoe.Image3)) shoe.Image3 = updatedShoe.Image3;
+        if (!string.IsNullOrEmpty(updatedShoe.Image4)) shoe.Image4 = updatedShoe.Image4;
+        if (!string.IsNullOrEmpty(updatedShoe.ShopierLink)) shoe.ShopierLink = updatedShoe.ShopierLink;
+
+        return Ok(shoe);
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteShoe(int id)
+    {
+        var shoe = Shoe.FirstOrDefault(x => x.Id == id);
+        if (shoe == null)
+        {
+            return NotFound(new { message = $"Id'si {id} olan ayakkabı bulunamadı." });
+        }
+
+        Shoe.Remove(shoe);
+        return NoContent();
+    }
+
 }

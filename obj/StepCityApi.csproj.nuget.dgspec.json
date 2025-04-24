@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tastk\\Desktop\\StepCityApi\\StepCityApi.csproj": {}
+    "C:\\Users\\tastk\\Documents\\GitHub\\StepCityApi\\StepCityApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tastk\\Desktop\\StepCityApi\\StepCityApi.csproj": {
+    "C:\\Users\\tastk\\Documents\\GitHub\\StepCityApi\\StepCityApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tastk\\Desktop\\StepCityApi\\StepCityApi.csproj",
+        "projectUniqueName": "C:\\Users\\tastk\\Documents\\GitHub\\StepCityApi\\StepCityApi.csproj",
         "projectName": "StepCityApi",
-        "projectPath": "C:\\Users\\tastk\\Desktop\\StepCityApi\\StepCityApi.csproj",
+        "projectPath": "C:\\Users\\tastk\\Documents\\GitHub\\StepCityApi\\StepCityApi.csproj",
         "packagesPath": "C:\\Users\\tastk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tastk\\Desktop\\StepCityApi\\obj\\",
+        "outputPath": "C:\\Users\\tastk\\Documents\\GitHub\\StepCityApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tastk\\AppData\\Roaming\\NuGet\\NuGet.Config"

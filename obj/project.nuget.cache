@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4VYcBE5BUzM=",
+  "dgSpecHash": "SgIouEUagV8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\tastk\\Desktop\\StepCityApi\\StepCityApi.csproj",
+  "projectFilePath": "C:\\Users\\tastk\\Documents\\GitHub\\StepCityApi\\StepCityApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tastk\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.2\\microsoft.aspnetcore.openapi.9.0.2.nupkg.sha512",
     "C:\\Users\\tastk\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
