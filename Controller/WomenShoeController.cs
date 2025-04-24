@@ -91,7 +91,7 @@ public class WomenShoeController : ControllerBase
             Image1="https://cdn.shopier.app/pictures_large/stepcity_4389e41053e72f366258ac4cdf73116e.jpeg",
             Image2="https://cdn.shopier.app/pictures_large/stepcity_c986fbc1c9a584fb82607b7b98f3e289.jpeg",
             Image3="https://cdn.shopier.app/pictures_large/stepcity_025692770e475ff2d595de5119203c98.jpeg",
-            Image4="https://cdn.shopier.app/pictures_large/stepcity_025692770e475ff2d595de5119203c98.jpeg",
+            Image4="https://cdn.shopier.app/pictures_large/stepcity_b0530f5a2593e22271994a15dcc05d54.jpeg",
             ShopierLink="https://www.shopier.com/34618079"
         },
         new ShoeFeature
@@ -350,7 +350,7 @@ public class WomenShoeController : ControllerBase
         {
             Id=25,
             Brand="New Balance",
-            Model="530 Erkek Sneaker",
+            Model="530 Kadın Sneaker",
             Price=1696,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -476,6 +476,92 @@ public class WomenShoeController : ControllerBase
             return NotFound(new { message = $"Id'si {id} olan ayakkabı bulunamadı." });
         }
         return Ok(shoe);
+    }
+
+    [HttpPost]
+    public IActionResult AddShoe([FromBody] ShoeFeature newShoe)
+    {
+        if (newShoe == null)
+        {
+            return BadRequest(new { message = "Geçersiz ayakkabı verisi." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.Brand))
+        {
+            return BadRequest(new { message = "Marka alanı boş olamaz." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.Model))
+        {
+            return BadRequest(new { message = "Model alanı boş olamaz." });
+        }
+
+        if (newShoe.Price <= 0)
+        {
+            return BadRequest(new { message = "Fiyat sıfırdan büyük olmalıdır." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.Title))
+        {
+            return BadRequest(new { message = "Başlık alanı boş olamaz." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.Cargo))
+        {
+            return BadRequest(new { message = "Kargo durumu boş olamaz." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.Image1) || string.IsNullOrEmpty(newShoe.Image2) || string.IsNullOrEmpty(newShoe.Image3) || string.IsNullOrEmpty(newShoe.Image4))
+        {
+            return BadRequest(new { message = "Tüm görsel alanları boş olamaz." });
+        }
+
+        if (string.IsNullOrEmpty(newShoe.ShopierLink))
+        {
+            return BadRequest(new { message = "Shopier linki boş olamaz." });
+        }
+
+        var newId = Shoe.Max(x => x.Id) + 1;
+        newShoe.Id = newId;
+
+
+        Shoe.Add(newShoe);
+        return CreatedAtAction(nameof(GetShoeById), new { id = newShoe.Id }, newShoe);
+    }
+
+
+    [HttpPut("{id}")]
+    public IActionResult UpdateShoe(int id, [FromBody] ShoeFeature updatedShoe)
+    {
+        var shoe = Shoe.FirstOrDefault(x => x.Id == id);
+        if (shoe == null)
+        {
+            return NotFound(new { message = $"Id'si {id} olan ayakkabı bulunamadı." });
+        }
+
+        if (!string.IsNullOrEmpty(updatedShoe.Brand)) shoe.Brand = updatedShoe.Brand;
+        if (!string.IsNullOrEmpty(updatedShoe.Model)) shoe.Model = updatedShoe.Model;
+        if (updatedShoe.Price > 0) shoe.Price = updatedShoe.Price;
+        if (!string.IsNullOrEmpty(updatedShoe.Image1)) shoe.Image1 = updatedShoe.Image1;
+        if (!string.IsNullOrEmpty(updatedShoe.Image2)) shoe.Image2 = updatedShoe.Image2;
+        if (!string.IsNullOrEmpty(updatedShoe.Image3)) shoe.Image3 = updatedShoe.Image3;
+        if (!string.IsNullOrEmpty(updatedShoe.Image4)) shoe.Image4 = updatedShoe.Image4;
+        if (!string.IsNullOrEmpty(updatedShoe.ShopierLink)) shoe.ShopierLink = updatedShoe.ShopierLink;
+
+        return Ok(shoe);
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult DeleteShoe(int id)
+    {
+        var shoe = Shoe.FirstOrDefault(x => x.Id == id);
+        if (shoe == null)
+        {
+            return NotFound(new { message = $"Id'si {id} olan ayakkabı bulunamadı." });
+        }
+
+        Shoe.Remove(shoe);
+        return NoContent();
     }
 
 }

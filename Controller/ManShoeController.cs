@@ -19,7 +19,7 @@ public class ManShoeController : ControllerBase
             Image2="https://cdn.shopier.app/pictures_large/stepcity_3ee3ac5fcc06d33314f3daaed0eac7bb.jpeg",
             Image3="https://cdn.shopier.app/pictures_large/stepcity_797a715d85a8656c3b29a6b415277677.jpeg",
             Image4="https://cdn.shopier.app/pictures_large/stepcity_87b22b874025b016341e0b8bbdcc514f.jpeg",
-            ShopierLink="https://www.shopier.com/s/product/35040267"
+            ShopierLink="https://www.shopier.com/35040267"
         },
 
           new ShoeFeature
@@ -56,7 +56,7 @@ public class ManShoeController : ControllerBase
         {
             Id=4,
             Brand="Nike",
-            Model="Air Force 1 Erkek",
+            Model="Air Force 1 Erkek Sneaker",
             Price=1299,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -71,7 +71,7 @@ public class ManShoeController : ControllerBase
         {
             Id=5,
             Brand="Nike",
-            Model="Dunk Low Panda Erkek",
+            Model="Dunk Low Panda Erkek Sneaker",
             Price=1299,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -161,7 +161,7 @@ public class ManShoeController : ControllerBase
         {
             Id=11,
             Brand="EA7",
-            Model="Emporio Armani Sneaker",
+            Model="Emporio Armani Erkek Sneaker",
             Price=1599,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -176,7 +176,7 @@ public class ManShoeController : ControllerBase
         {
             Id=12,
             Brand="Armani",
-            Model="Exchange",
+            Model="Exchange Erkek Sneaker",
             Price=1599,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -191,7 +191,7 @@ public class ManShoeController : ControllerBase
         {
             Id=13,
             Brand="EA7",
-            Model="Emporio Armani Sneaker",
+            Model="Emporio Armani Erkek Sneaker",
             Price=1599,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -206,7 +206,7 @@ public class ManShoeController : ControllerBase
         {
             Id=14,
             Brand="EA7",
-            Model="Emporio Armani Sneaker",
+            Model="Emporio Armani Erkek Sneaker",
             Price=1599,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -221,7 +221,7 @@ public class ManShoeController : ControllerBase
         {
             Id=15,
             Brand="EA7",
-            Model="Emporio Armani Sneaker",
+            Model="Emporio Armani Erkek Sneaker",
             Price=1599,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -236,7 +236,7 @@ public class ManShoeController : ControllerBase
         {
             Id=16,
             Brand="EA7",
-            Model="Emporio Armani Sneaker",
+            Model="Emporio Armani Erkek Sneaker",
             Price=1599,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -356,7 +356,7 @@ public class ManShoeController : ControllerBase
         {
             Id=24,
             Brand="Louis Vuitton",
-            Model="Trainer Sneaker Blue",
+            Model="Trainer Sneaker Blue Erkek Sneaker",
             Price=1599,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -628,7 +628,7 @@ public class ManShoeController : ControllerBase
         {
             Id=42,
             Brand="Nike",
-            Model="Dunk Low Cream",
+            Model="Dunk Low Cream Erkek Sneaker",
             Price=1299,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -824,7 +824,7 @@ public class ManShoeController : ControllerBase
         {
             Id=55,
             Brand="Louis Vuitton",
-            Model="Trainer Sneaker Black",
+            Model="Trainer Sneaker Black Erkek Sneaker",
             Price=1599,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -839,7 +839,7 @@ public class ManShoeController : ControllerBase
         {
             Id=56,
             Brand="Louis Vuitton",
-            Model="Trainer Sneaker Full White",
+            Model="Trainer Sneaker Full White Erkek Sneaker",
             Price=1599,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
@@ -1109,7 +1109,7 @@ public class ManShoeController : ControllerBase
         {
             Id=74,
             Brand="EA7",
-            Model="Emporıo Armanı Slasher Sneaker",
+            Model="Emporıo Armanı Slasher Erkek Sneaker",
             Price=1599,
             Title="Bu Sitedeki tüm ürünler ücretsiz kargo ile gönderilir.",
             Cargo="Ücretsiz Kargo",
