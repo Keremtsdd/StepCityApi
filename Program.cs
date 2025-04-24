@@ -1,9 +1,15 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// CORS policy adı
-var corsPolicyName = "AllowAll"; // istersen özel bir isim verebilirsin
+// JWT Ayarlarını al
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
 
-// CORS servis ekleme
+// CORS policy
+var corsPolicyName = "AllowAll";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: corsPolicyName, policy =>
@@ -15,21 +21,42 @@ builder.Services.AddCors(options =>
     });
 });
 
-builder.Services.AddControllers();  // API Controller'larını kaydediyoruz
-builder.Services.AddOpenApi();      // Swagger servisini ekliyoruz
+// 🔐 JWT Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+});
+
+builder.Services.AddControllers();
+builder.Services.AddOpenApi(); // Eğer Swashbuckle yerine OpenAPI kullanıyorsan bu tamam
 
 var app = builder.Build();
 
-// CORS'u pipeline'a ekle
 app.UseCors(corsPolicyName);
 
-// OpenAPI (Swagger) sadece development'ta aktif
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.MapOpenApi(); // Eğer `AddOpenApi()` kullanıyorsan bu tamam
 }
 
 app.UseHttpsRedirection();
-app.MapControllers();  // Controller rotalarını ekliyoruz
+
+app.UseAuthentication(); // 🧩 Auth middleware'i
+app.UseAuthorization();  // 🧩 Authorization middleware'i
+
+app.MapControllers();
 
 app.Run();
