@@ -73,3 +73,6 @@ c:\Users\tastk\Documents\GitHub\StepCityApi\obj\Debug\net9.0\refint\StepCityApi.
 c:\Users\tastk\Documents\GitHub\StepCityApi\obj\Debug\net9.0\StepCityApi.pdb
 C:\Users\tastk\Documents\GitHub\StepCityApi\obj\Debug\net9.0\StepCityApi.genruntimeconfig.cache
 C:\Users\tastk\Documents\GitHub\StepCityApi\obj\Debug\net9.0\ref\StepCityApi.dll
+c:\Users\tastk\Documents\GitHub\StepCityApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+c:\Users\tastk\Documents\GitHub\StepCityApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+c:\Users\tastk\Documents\GitHub\StepCityApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

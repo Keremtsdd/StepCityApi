@@ -4,7 +4,6 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// JWT Ayarlarını al
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
 
@@ -40,23 +39,29 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddControllers();
-builder.Services.AddOpenApi(); // Eğer Swashbuckle yerine OpenAPI kullanıyorsan bu tamam
 
 var app = builder.Build();
 
+
 app.UseCors(corsPolicyName);
+
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi(); // Eğer `AddOpenApi()` kullanıyorsan bu tamam
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication(); // 🧩 Auth middleware'i
-app.UseAuthorization();  // 🧩 Authorization middleware'i
+// 🔐 Auth Middleware
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();

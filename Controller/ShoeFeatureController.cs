@@ -1,0 +1,77 @@
+using Microsoft.AspNetCore.Mvc;
+using ShoeFeature;
+using ShoeFeature.Services;
+
+namespace ShoeFeature.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ShoeFeatureController : ControllerBase
+    {
+        // GET: api/ShoeFeature
+        [HttpGet]
+        public ActionResult<IEnumerable<ShoeFeature>> GetAllShoeFeatures()
+        {
+            var shoeFeatures = ShoeFeaurteService.GetAll();
+            return Ok(shoeFeatures);
+        }
+
+        // GET: api/ShoeFeature/{id}
+        [HttpGet("{id}")]
+        public ActionResult<ShoeFeature> GetShoeFeatureById(int id)
+        {
+            var shoeFeature = ShoeFeaurteService.GetById(id);
+
+            if (shoeFeature == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(shoeFeature);
+        }
+
+        // POST: api/ShoeFeature
+        [HttpPost]
+        public ActionResult<ShoeFeature> AddShoeFeature([FromBody] ShoeFeature shoeFeature)
+        {
+            if (shoeFeature == null)
+            {
+                return BadRequest("Invalid data.");
+            }
+
+            ShoeFeaurteService.Add(shoeFeature);
+            return CreatedAtAction(nameof(GetShoeFeatureById), new { id = shoeFeature.Id }, shoeFeature);
+        }
+
+        // PUT: api/ShoeFeature/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateShoeFeature(int id, [FromBody] ShoeFeature updatedShoeFeature)
+        {
+            var shoeFeature = ShoeFeaurteService.GetById(id);
+
+            if (shoeFeature == null)
+            {
+                return NotFound();
+            }
+
+            updatedShoeFeature.Id = id;
+            ShoeFeaurteService.Update(updatedShoeFeature);
+            return NoContent();
+        }
+
+        // DELETE: api/ShoeFeature/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteShoeFeature(int id)
+        {
+            var shoeFeature = ShoeFeaurteService.GetById(id);
+
+            if (shoeFeature == null)
+            {
+                return NotFound();
+            }
+
+            ShoeFeaurteService.Delete(id);
+            return NoContent();
+        }
+    }
+}
