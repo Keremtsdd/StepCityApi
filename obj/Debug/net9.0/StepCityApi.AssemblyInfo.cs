@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StepCityApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+003e070ad1c870636a5594d1da79e84fc3d953a1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+492b205c63ec745c4878a5207a6cc5a835f50b60")]
 [assembly: System.Reflection.AssemblyProductAttribute("StepCityApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StepCityApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

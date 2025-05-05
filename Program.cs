@@ -1,13 +1,20 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using ShoeFeature; // AppDbContext ve ShoeFeature modeli burada tanımlıysa
 
 var builder = WebApplication.CreateBuilder(args);
 
+// 🔐 JWT Ayarları
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
 
-// CORS policy
+// 🔗 SQL Server Bağlantısı
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// 🌐 CORS Ayarı
 var corsPolicyName = "AllowAll";
 builder.Services.AddCors(options =>
 {
@@ -39,17 +46,14 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddControllers();
-
 var app = builder.Build();
 
-
+// 🌐 Middleware
 app.UseCors(corsPolicyName);
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -58,10 +62,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// 🔐 Auth Middleware
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
 app.Run();
