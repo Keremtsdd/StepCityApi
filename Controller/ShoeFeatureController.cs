@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using ShoeFeature;
 using ShoeFeature.Services;
 
 namespace ShoeFeature.Controllers
@@ -8,7 +7,6 @@ namespace ShoeFeature.Controllers
     [ApiController]
     public class ShoeFeatureController : ControllerBase
     {
-        // GET: api/ShoeFeature
         [HttpGet]
         public ActionResult<IEnumerable<ShoeFeature>> GetAllShoeFeatures()
         {
@@ -16,7 +14,6 @@ namespace ShoeFeature.Controllers
             return Ok(shoeFeatures);
         }
 
-        // GET: api/ShoeFeature/{id}
         [HttpGet("{id}")]
         public ActionResult<ShoeFeature> GetShoeFeatureById(int id)
         {
@@ -30,7 +27,6 @@ namespace ShoeFeature.Controllers
             return Ok(shoeFeature);
         }
 
-        // POST: api/ShoeFeature
         [HttpPost]
         public ActionResult<ShoeFeature> AddShoeFeature([FromBody] ShoeFeature shoeFeature)
         {
@@ -43,7 +39,6 @@ namespace ShoeFeature.Controllers
             return CreatedAtAction(nameof(GetShoeFeatureById), new { id = shoeFeature.Id }, shoeFeature);
         }
 
-        // PUT: api/ShoeFeature/{id}
         [HttpPut("{id}")]
         public ActionResult UpdateShoeFeature(int id, [FromBody] ShoeFeature updatedShoeFeature)
         {
@@ -59,7 +54,6 @@ namespace ShoeFeature.Controllers
             return NoContent();
         }
 
-        // DELETE: api/ShoeFeature/{id}
         [HttpDelete("{id}")]
         public ActionResult DeleteShoeFeature(int id)
         {

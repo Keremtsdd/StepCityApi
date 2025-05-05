@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using ShoeFeature; // AppDbContext ve ShoeFeature modeli burada tanımlıysa
+using ShoeFeature;
 
 var builder = WebApplication.CreateBuilder(args);
 

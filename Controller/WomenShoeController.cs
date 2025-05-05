@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ShoeFeature;
 
 namespace ShoeFeature.Controllers
 {
@@ -18,7 +17,9 @@ namespace ShoeFeature.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var shoes = await _context.Shoes.ToListAsync();
+            var shoes = await _context.Shoes
+                .Where(s => s.Gender == "Women")
+                .ToListAsync();
             return Ok(shoes);
         }
 

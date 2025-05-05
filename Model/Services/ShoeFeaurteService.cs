@@ -1,5 +1,4 @@
 using System.Text.Json;
-using ShoeFeature;  // Burada doğru namespace'i kullanmalısın
 
 namespace ShoeFeature.Services
 {
